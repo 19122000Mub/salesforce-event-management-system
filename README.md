@@ -1,16 +1,10 @@
 # Salesforce Event Management System
 
-A Salesforce CRM project developed to manage Events, Sessions, Speakers, Attendees, Registrations, and Feedback.
+## Overview
 
-## Skills Used
+This project was developed in Salesforce CRM to manage events, sessions, speakers, attendees, registrations, and feedback.
 
-* Salesforce CRM
-* SOQL
-* Data Modeling
-* Lookup Relationships
-* Master-Detail Relationships
-
-## Objects
+## Objects Used
 
 * Event
 * Session
@@ -19,8 +13,41 @@ A Salesforce CRM project developed to manage Events, Sessions, Speakers, Attende
 * Feedback
 * Event Registration
 
-## Sample Query
+## Relationships
+
+* Event → Session (Master-Detail)
+* Speaker → Session (Lookup)
+* Session → Feedback
+* Event Registration (Junction Object)
+
+## Skills Demonstrated
+
+* Salesforce CRM
+* Data Modeling
+* SOQL
+* Lookup Relationships
+* Master-Detail Relationships
+* Aggregate Functions
+
+## Sample SOQL Queries
+
+### Average Rating Per Session
 
 SELECT Session__r.Name, AVG(Rating__c)
 FROM Feedback__c
 GROUP BY Session__r.Name
+
+### Attendees Registered for Multiple Events
+
+SELECT Attendee__c, COUNT(Id)
+FROM EventRegistration__c
+GROUP BY Attendee__c
+HAVING COUNT(Id) > 1
+
+## Learning Outcomes
+
+* Salesforce CRM Fundamentals
+* Object Relationships
+* Data Modeling
+* SOQL Query Writing
+* Aggregate Functions
